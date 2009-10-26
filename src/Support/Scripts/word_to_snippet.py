@@ -66,7 +66,8 @@ def act(context, default=None, alpha_numeric=True, extra_characters='',
         doc_type = tea.select_from_zones(context, range, 'html', **zones)
         
         # Prepare the snippet
-        snippet = zen_core.expand_abbr(fullword, doc_type)
+        # TODO add profile name
+        snippet = zen_core.expand_abbreviation(fullword, doc_type, 'xhtml')
     elif (mode == 'zen' or mode == 'html') and tea.is_selfclosing(word):
         # Self-closing, so construct the snippet from scratch
         snippet = '<' + fullword
