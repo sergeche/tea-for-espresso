@@ -512,7 +512,7 @@ class Tag(object):
 		This function tests if current tags' content contains XHTML tags. 
 	 	This function is mostly used for output formatting
 		"""
-		return self.get_content() and re_tag.search(self.get_content())
+		return self.get_content() and re_tag.search(self.get_content()) is not None
 	
 	
 	def has_block_children(self):

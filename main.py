@@ -30,4 +30,5 @@ import TEAGenericAction
 import TEAforEspresso
 import TEALoader
 import TEASpacesToTabs
+import TEAWrapWithAbbreviation
 import TEAPreferences

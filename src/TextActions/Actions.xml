@@ -362,15 +362,6 @@
 		</setup>
 	</action>
 	
-	<action id="com.onecrayon.TextActions.WrapWithAbbreviation" category="actions.text.HTML/tea.insertion">
-		<class>TEAforEspresso</class>
-		<title>Wrap with Abbreviation</title>
-		<key-equivalent>control j</key-equivalent>
-		<setup>
-			<action>wrap_with_abbreviation</action>
-		</setup>
-	</action>
-	
 	<!--<action id="com.onecrayon.TextActions.InsertSnippet.HTMLtag" category="actions.text.HTML/tea.insertion">
 		<class>TEAforEspresso</class>
 		<title>Insert Tag</title>
