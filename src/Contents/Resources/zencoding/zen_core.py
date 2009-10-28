@@ -25,6 +25,8 @@ Created on Apr 17, 2009
 @author: Sergey Chikuyonok (http://chikuyonok.ru)
 '''
 from zencoding.zen_settings import zen_settings
+from tea_actions import log
+import string
 import re
 import stparser
 

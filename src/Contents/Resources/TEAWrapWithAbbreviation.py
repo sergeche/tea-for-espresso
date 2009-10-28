@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 '''
 @author: Sergey Chikuyonok (serge.che@gmail.com)
 '''
@@ -65,10 +67,42 @@ class TEAWrapWithAbbreviation(TEAforEspresso):
 		if code == 1:
 			# Leave sheet open with "processing" spinner
 			self.spinner.startAnimation_(self)
-			wrap(self.context, self.abbr.stringValue())
+			wrap2(self.context, self.abbr.stringValue())
 			self.spinner.stopAnimation_(self)
 		
 		sheet.orderOut_(self)
+		
+		
+def wrap2(context, abbr, profile_name='xhtml'):
+#	zen.newline = tea.get_line_ending(context)
+	
+	text, rng = tea.get_single_selection(context)
+	if text == None:
+		# no selection, find matching tag
+		start, end = html_matcher.match(context.string(), rng.location)
+		if start is None:
+			# nothing to wrap
+			return False
+		
+		last = html_matcher.last_match
+		start = last['opening_tag'].start
+		end = last['closing_tag'] and last['closing_tag'].end or last['opening_tag'].end
+		
+		tea.set_selected_range(context, tea.new_range(start, end - start))
+		text, rng = tea.get_single_selection(context)
+		
+	# Detect the type of document we're working with
+	zones = {
+		'css, css *': 'css',
+		'xsl, xsl *': 'xsl',
+		'xml, xml *': 'xml'
+	}
+	doc_type = tea.select_from_zones(context, rng, 'html', **zones)
+	
+	result = zen.wrap_with_abbreviation(abbr, text, doc_type, profile_name)
+	
+	tea.log('result is %s' % result)
+		
 		
 def wrap(context, abbr, profile_name='xhtml'):
 	ranges = tea.get_ranges(context)
@@ -104,6 +138,8 @@ def wrap(context, abbr, profile_name='xhtml'):
 	}
 	doc_type = tea.select_from_zones(context, rng, 'html', **zones)
 	result = zen.wrap_with_abbreviation(abbr, content, doc_type, profile_name)
+	
+	tea.log('result is %s' % result)
 	
 	
 	if result:
