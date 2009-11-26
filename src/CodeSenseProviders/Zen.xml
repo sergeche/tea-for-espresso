@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codesense>
+	<provider>
+		<selector>html</selector>
+		<completions>ru.zen-coding.html</completions>
+		<complete-match>[a-zA-Z_][\w.\:]*</complete-match>
+	</provider>
+</codesense>

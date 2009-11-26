@@ -11,6 +11,7 @@ from subprocess import Popen, PIPE
 
 plist_path = os.path.expanduser('~/Library/Preferences/com.macrabbit.Espresso.plist')
 cache_file = os.path.join(os.path.dirname(__file__), '_user_snippets.cache')
+code_sense_path = os.path.join(os.path.dirname(__file__), '../../../CodeSenseLibraries/Zen.xml')
 
 re_full_tag = re.compile(r'^<([\w\-]+(?:\:\w+)?)((?:\s+[\w\-]+(?:\s*=\s*(?:(?:"[^"]*")|(?:\'[^\']*\')|[^>\s]+))?)*)\s*(\/?)>(?:</\1>)?')
 
